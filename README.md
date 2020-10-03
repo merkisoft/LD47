@@ -2,5 +2,7 @@
 
 ## Midi looper
 
-## Tools used
-
+## Software & Hardware used
+Unity & JetBrains Rider
+Gimp 
+AudioCity

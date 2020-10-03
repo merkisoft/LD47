@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundLoop : MonoBehaviour {
+public partial class SoundLoop : MonoBehaviour {
     public Transform line;
 
     public GameObject toneControlPrefab;
@@ -12,26 +12,15 @@ public class SoundLoop : MonoBehaviour {
     
     private float startTime;
     private float lastTime;
-    private float loopTime = 4;
+    private float loopTime = 2;
 
-    private List<LoopElement> loopElements = new List<LoopElement>();
+    public List<LoopElement> loopElements = new List<LoopElement>();
 
     private AudioSource[] sources = new AudioSource[10];
     private int sourcesIndex = 0;
-    
-    class LoopElement {
-        public AudioClip audio;
-        public float time;
-
-        public LoopElement(AudioClip audio, float time) {
-            this.audio = audio;
-            this.time = time;
-        }
-
-    }
 
     // Start is called before the first frame update
-    void Start() {
+    public void Start() {
         startTime = Time.time;
         lastTime = startTime;
 
@@ -47,11 +36,15 @@ public class SoundLoop : MonoBehaviour {
     void Update() {
         var time = (Time.time - startTime) % loopTime;
 
-        line.localRotation = Quaternion.AngleAxis(360 / loopTime * time, Vector3.back);
+        if (line) line.localRotation = Quaternion.AngleAxis(360 / loopTime * time, Vector3.back);
 
+        
         foreach (var le in loopElements) {
-            if (le.time > lastTime && le.time < time) {
-                play(le);
+            if (le.time > lastTime && le.time < time
+                || lastTime > time && le.time < time    // roll over, time = 0
+                || lastTime > time && le.time > lastTime    // roll over, time = "< max"
+                ) {
+                  play(le);
             }
         }
 
@@ -65,7 +58,7 @@ public class SoundLoop : MonoBehaviour {
         play(loopElement);
         loopElements.Add(loopElement);
 
-        var toneControl = Instantiate(toneControlPrefab, transform);
+        var toneControl = Instantiate(toneControlPrefab, line.parent);
         toneControl.transform.localRotation = Quaternion.AngleAxis(360 / loopTime * time, Vector3.back);
         toneControl.GetComponentInChildren<Button>().onClick.AddListener(() => {
             loopElements.Remove(loopElement);
