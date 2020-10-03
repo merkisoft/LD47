@@ -26,9 +26,11 @@
       <Path>.idea</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
-      <Path>Temp</Path>
       <Path>UserSettings</Path>
+      <Path>doc</Path>
+      <Path>midi</Path>
       <Path>obj</Path>
+      <Path>xxx</Path>
     </explicitExcludes>
   </component>
 </project>

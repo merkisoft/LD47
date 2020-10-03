@@ -8,77 +8,6 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="MidiPlayer" t="Include">
-          <e p="Demo" t="Include">
-            <e p="Builder" t="Include">
-              <e p="IMPORTANT  NOTICE.txt" t="Include" />
-            </e>
-            <e p="FreeDemos" t="Include">
-              <e p="Material" t="Include">
-                <e p="Cold Night" t="Include">
-                  <e p="Extract From AllSkyFree_Readme.txt" t="Include" />
-                </e>
-              </e>
-              <e p="Script" t="Include">
-                <e p="CreateSample.cs" t="Include" />
-                <e p="ExtendedFlycam.cs" t="Include" />
-                <e p="ExternalComponents" t="Include">
-                  <e p="FlyingCamera.cs" t="Include" />
-                  <e p="iTween.cs" t="Include" />
-                </e>
-                <e p="FlyCamera.cs" t="Include" />
-                <e p="FlyOrMoveController.cs" t="Include" />
-                <e p="GUISelectSoundFont.cs" t="Include" />
-                <e p="HelperDemo.cs" t="Include" />
-                <e p="MainMenu.cs" t="Include" />
-                <e p="MoveObject.cs" t="Include" />
-                <e p="RotateObject.cs" t="Include" />
-                <e p="SceneHandler.cs" t="Include" />
-                <e p="TestMidiFileLoad.cs" t="Include" />
-                <e p="TestMidiFilePlayerMulti" t="Include">
-                  <e p="LookPoint.cs" t="Include" />
-                  <e p="LookTarget.cs" t="Include" />
-                  <e p="MovePoint.cs" t="Include" />
-                  <e p="SavWav.cs" t="Include" />
-                </e>
-                <e p="TestMidiFilePlayerScripting.cs" t="Include" />
-                <e p="TestMidiStream.cs" t="Include" />
-              </e>
-              <e p="SourceCatchMusic" t="Include">
-                <e p="PhysicsMaterial" t="Include">
-                  <e p="Script" t="Include">
-                    <e p="Collide.cs" t="Include" />
-                    <e p="ControlView.cs" t="Include" />
-                    <e p="MusicView.cs" t="Include" />
-                    <e p="NoteView.cs" t="Include" />
-                  </e>
-                </e>
-              </e>
-            </e>
-            <e p="Water" t="Include">
-              <e p="Water" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Displace.cs" t="Include" />
-                  <e p="GerstnerDisplace.cs" t="Include" />
-                  <e p="MeshContainer.cs" t="Include" />
-                  <e p="PlanarReflection.cs" t="Include" />
-                  <e p="SpecularLighting.cs" t="Include" />
-                  <e p="Water.cs" t="Include" />
-                  <e p="WaterBase.cs" t="Include" />
-                  <e p="WaterTile.cs" t="Include" />
-                </e>
-                <e p="Shaders" t="Include">
-                  <e p="FXWaterPro.shader" t="Include" />
-                </e>
-              </e>
-              <e p="Water4" t="Include">
-                <e p="Shaders" t="Include">
-                  <e p="FXWater4Advanced.shader" t="Include" />
-                  <e p="FXWater4Simple.shader" t="Include" />
-                  <e p="WaterInclude.cginc" t="Include" />
-                </e>
-              </e>
-            </e>
-          </e>
           <e p="Resources" t="Include">
             <e p="MidiSet.txt" t="Include" />
             <e p="SoundfontsDB" t="Include">
@@ -195,16 +124,6 @@
               <e p="TrackSequenceNumberEvent.cs" t="Include" />
             </e>
           </e>
-          <e p="Third-Party Notices.txt" t="Include" />
-          <e p="TutorialInfo" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Editor" t="Include">
-                <e p="ReadmeEditor.cs" t="Include" />
-              </e>
-              <e p="Readme.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Version changes.txt" t="Include" />
         </e>
         <e p="Test.cs" t="Include" />
       </e>
