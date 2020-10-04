@@ -6,6 +6,7 @@
     <e p="C:\Users\Fabian\Documents\Unity Projects\unity\LD47\caught-in-the-loop" t="IncludeRecursive">
       <e p="Assets" t="Include">
         <e p="scripts" t="Include">
+          <e p="Level.cs" t="Include" />
           <e p="LoopElement.cs" t="Include" />
           <e p="MyScriptAssembly.asmdef" t="Include" />
           <e p="PlayTarget.cs" t="Include" />

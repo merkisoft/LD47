@@ -1,9 +1,13 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class LoopElement {
     public AudioClip audio;
     public float time;
+
+    public LoopElement() {
+    }
 
     public LoopElement(AudioClip audio, float time) {
         this.audio = audio;

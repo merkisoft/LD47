@@ -416,7 +416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 409.4037, y: 0}
+  m_AnchoredPosition: {x: 415.13763, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &751243325
@@ -624,7 +624,7 @@ MonoBehaviour:
   line: {fileID: 636261279}
   toneControlPrefab: {fileID: 0}
   audioSourcePrefab: {fileID: 2931697492041494220, guid: c2956084aa235874e8fd395fc2f03eb3, type: 3}
-  loopTime: 2
+  level: {fileID: 11400000, guid: f5a36c2b67436a74cbb3bfb0bffbee9a, type: 2}
   audioSources:
   - {fileID: 2931697492041494227, guid: 7b3eabe635128b94f8072ec6bbb211ac, type: 3}
   - {fileID: 5941338975562861294, guid: fac91538c8233d548a188072658cd766, type: 3}
@@ -664,6 +664,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   user: {fileID: 1570935886}
   status: {fileID: 465662035}
+  levels:
+  - {fileID: 11400000, guid: f5a36c2b67436a74cbb3bfb0bffbee9a, type: 2}
+  - {fileID: 11400000, guid: ef443243a1fb5b24fb70d52052b0ea47, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 05e4db2f89074c24fa8f4154cd098368, type: 2}
+  - {fileID: 11400000, guid: 5b339c502533e4346b4947ed79486b0f, type: 2}
+  - {fileID: 11400000, guid: 8c3461f207cb8f04290b46b2f00b22cb, type: 2}
+  - {fileID: 11400000, guid: 2efcd2a1a3f18064c912a8ac4279ca79, type: 2}
+  - {fileID: 11400000, guid: 6e3f2ae09d19f3f40a12e94e3ecda8dd, type: 2}
+  - {fileID: 11400000, guid: bee0180d3d3b0904da848cba11c82671, type: 2}
 --- !u!1 &1036621500
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 409.4037, y: 0}
+  m_AnchoredPosition: {x: 415.13763, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036621502
@@ -1322,7 +1332,7 @@ MonoBehaviour:
   line: {fileID: 636261279}
   toneControlPrefab: {fileID: 7359746494669297917, guid: 9ad4529932f972e44a354d8aa65dbe91, type: 3}
   audioSourcePrefab: {fileID: 2931697492041494220, guid: c2956084aa235874e8fd395fc2f03eb3, type: 3}
-  loopTime: 2
+  level: {fileID: 11400000, guid: 562af10392a1bcf41bccba3cc399958b, type: 2}
 --- !u!1 &1610706549
 GameObject:
   m_ObjectHideFlags: 0
