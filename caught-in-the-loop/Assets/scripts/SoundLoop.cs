@@ -21,8 +21,6 @@ public class SoundLoop : MonoBehaviour {
 
     // Start is called before the first frame update
     public void Awake() {
-        clearUserInput();
-        
         startTime = Time.time;
         lastTime = startTime;
 
@@ -74,13 +72,24 @@ public class SoundLoop : MonoBehaviour {
         });
     }
 
-    public virtual void clearUserInput() {
+    public virtual void clearUserInput(Level targetLevel) {
         foreach (var g in toneControls) {
             Destroy(g);
         }
         
         level.loopElements.Clear();
         toneControls.Clear();
+
+        var soundButtons = GetComponents<SoundButton>();
+        foreach (var soundButton in soundButtons) {
+            soundButton.gameObject.SetActive(false);
+            foreach (var le in targetLevel.loopElements) {
+                if (le.audio == soundButton.clip.clip) {
+                    soundButton.gameObject.SetActive(true);
+                    break;
+                }
+            }
+        }
     }
     
     private void play(LoopElement le) {

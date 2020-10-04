@@ -11,13 +11,15 @@ public class PlayTarget : MonoBehaviour {
 
     public Text status;
     public Text level;
+    public GameObject targetCircle;
 
     public Level[] levels;
     private int currentLevel;
 
     private void Start() {
         targetSoundLoop = GetComponent<TargetSoundLoop>();
-        
+        targetSoundLoop.level = levels[0];
+        user.clearUserInput(targetSoundLoop.level);
         trigger();
     }
 
@@ -26,13 +28,20 @@ public class PlayTarget : MonoBehaviour {
     }
 
     public IEnumerator stop() {
-        targetSoundLoop.enabled = true;
         user.enabled = false;
+        targetCircle.SetActive(true);
+        targetSoundLoop.line.localRotation = Quaternion.identity;
         
-        yield return new WaitForSeconds(targetSoundLoop.level.loopTime);
+        yield return new WaitForSeconds(0.5f);
+       
+        targetSoundLoop.enabled = true;
 
+        yield return new WaitForSeconds(targetSoundLoop.level.loopTime * 2 - 0.05f);
+        
+        targetSoundLoop.line.localRotation = Quaternion.identity;
+        targetCircle.SetActive(false);
         targetSoundLoop.enabled = false;
-
+        
         yield return new WaitForSeconds(0.5f);
 
         user.enabled = true;
@@ -43,7 +52,7 @@ public class PlayTarget : MonoBehaviour {
 
         if (statusText == "0 0") {
             targetSoundLoop.level = levels[++currentLevel % levels.Length];
-            user.clearUserInput();
+            user.clearUserInput(targetSoundLoop.level);
             trigger();
         }
         

@@ -13,4 +13,12 @@ MonoBehaviour:
   m_Name: level 4
   m_EditorClassIdentifier: 
   loopTime: 2
-  loopElements: []
+  loopElements:
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 0
+  - audio: {fileID: 8300000, guid: e304c1d8aec5451ea5e91e1bd16843d4, type: 3}
+    time: 1
+  - audio: {fileID: 8300000, guid: 7f910d961c764443b42bf16dceefbb1f, type: 3}
+    time: 1.5
+  - audio: {fileID: 8300000, guid: 7f910d961c764443b42bf16dceefbb1f, type: 3}
+    time: 0.5

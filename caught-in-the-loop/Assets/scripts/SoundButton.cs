@@ -17,7 +17,7 @@ public class SoundButton : MonoBehaviour, IPointerDownHandler  {
     }
 
     public void trigger() {
-        soundLoop.add(clip);
+        if (soundLoop.enabled) soundLoop.add(clip);
     }
     
     public void OnPointerDown(PointerEventData eventData) {
