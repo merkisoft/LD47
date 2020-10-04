@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class SoundLoop : MonoBehaviour {
     public Transform line;
+    public Transform animationContainer; 
 
     public GameObject toneControlPrefab;
     public List<GameObject> toneControls = new List<GameObject>();
     public GameObject audioSourcePrefab;
+    public GameObject pulsePrefab;
     
     private float startTime;
     private float lastTime;
@@ -96,5 +98,15 @@ public class SoundLoop : MonoBehaviour {
         var audioSource = sources[sourcesIndex++ % sources.Length];
         audioSource.clip = le.audio;
         audioSource.Play();
+
+        if (pulsePrefab) {
+            var instantiate = Instantiate(pulsePrefab, animationContainer);
+            StartCoroutine(deletePulse(instantiate));
+        }
+    }
+
+    IEnumerator deletePulse(GameObject pulse) {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(pulse);
     }
 }

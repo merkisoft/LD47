@@ -18,7 +18,11 @@ public class PlayTarget : MonoBehaviour {
 
     private void Start() {
         targetSoundLoop = GetComponent<TargetSoundLoop>();
-        targetSoundLoop.level = levels[0];
+        nextLevel();
+    }
+
+    private void nextLevel() {
+        targetSoundLoop.level = levels[currentLevel++ % levels.Length];
         user.clearUserInput(targetSoundLoop.level);
         trigger();
     }
@@ -33,7 +37,13 @@ public class PlayTarget : MonoBehaviour {
         targetSoundLoop.line.localRotation = Quaternion.identity;
         
         yield return new WaitForSeconds(0.5f);
-       
+        
+        foreach (var le in levels[0].loopElements) {
+            while (le.audio.loadState == AudioDataLoadState.Loading) {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        
         targetSoundLoop.enabled = true;
 
         yield return new WaitForSeconds(targetSoundLoop.level.loopTime * 2 - 0.05f);
@@ -51,13 +61,11 @@ public class PlayTarget : MonoBehaviour {
         var statusText = TargetSoundLoop.compare(user.level.loopElements, targetSoundLoop.level.loopElements, targetSoundLoop.level.loopTime);
 
         if (statusText == "0 0") {
-            targetSoundLoop.level = levels[++currentLevel % levels.Length];
-            user.clearUserInput(targetSoundLoop.level);
-            trigger();
+            nextLevel();
         }
         
         var parts = statusText.Split(' ');
-        status.text = "missing: " + parts[0] + " | wrong: " + parts[1];
+        status.text = parts[0] + "  missing\n" + parts[1] + "  wrong";
 
         level.text = targetSoundLoop.level.name;
     }
