@@ -12,5 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b6097d606245519ae23e7c25bc06c9, type: 3}
   m_Name: level 9
   m_EditorClassIdentifier: 
-  loopTime: 2
-  loopElements: []
+  loopTime: 8
+  loopElements:
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 4.932602
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 5.5098114
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 6.148178
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 6.5260468
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 6.91716
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 7.5793915
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 0.12181091
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 0.7534027
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 1.1335907
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 1.4974823
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 2.1642914
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 2.9115448
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 3.5991058
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 4.3622284
+  - audio: {fileID: 8300000, guid: 60897737e30340658cd766e7c9626a66, type: 3}
+    time: 4.0011444

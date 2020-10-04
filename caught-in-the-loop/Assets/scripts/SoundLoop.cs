@@ -20,6 +20,7 @@ public class SoundLoop : MonoBehaviour {
 
     private AudioSource[] sources = new AudioSource[10];
     private int sourcesIndex = 0;
+    private SoundButton[] soundButtons;
 
     // Start is called before the first frame update
     public void Awake() {
@@ -31,6 +32,7 @@ public class SoundLoop : MonoBehaviour {
             sources[i] = audioSource.GetComponent<AudioSource>();
         }
         
+        soundButtons = GetComponentsInChildren<SoundButton>();
     }
 
     public void OnEnable() {
@@ -74,17 +76,17 @@ public class SoundLoop : MonoBehaviour {
         });
     }
 
-    public virtual void clearUserInput(Level targetLevel) {
+    public virtual void clearUserInput(Level targetLevel, bool freeplay) {
         foreach (var g in toneControls) {
             Destroy(g);
         }
-        
+
+        level.loopTime = targetLevel.loopTime;
         level.loopElements.Clear();
         toneControls.Clear();
 
-        var soundButtons = GetComponents<SoundButton>();
         foreach (var soundButton in soundButtons) {
-            soundButton.gameObject.SetActive(false);
+            soundButton.gameObject.SetActive(freeplay);
             foreach (var le in targetLevel.loopElements) {
                 if (le.audio == soundButton.clip.clip) {
                     soundButton.gameObject.SetActive(true);

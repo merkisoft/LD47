@@ -12,5 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b6097d606245519ae23e7c25bc06c9, type: 3}
   m_Name: level 6
   m_EditorClassIdentifier: 
-  loopTime: 2
-  loopElements: []
+  loopTime: 4
+  loopElements:
+  - audio: {fileID: 8300000, guid: 54528a0a459843f9a9fd5a181e131037, type: 3}
+    time: 2
+  - audio: {fileID: 8300000, guid: 54528a0a459843f9a9fd5a181e131037, type: 3}
+    time: 3
+  - audio: {fileID: 8300000, guid: 54528a0a459843f9a9fd5a181e131037, type: 3}
+    time: 1
+  - audio: {fileID: 8300000, guid: eba4162d18734afc9a063fa0750a55ba, type: 3}
+    time: 4
+  - audio: {fileID: 8300000, guid: dab5faad14a546a7a16a6633c7005bd9, type: 3}
+    time: 0.5
+  - audio: {fileID: 8300000, guid: dab5faad14a546a7a16a6633c7005bd9, type: 3}
+    time: 2.5
+  - audio: {fileID: 8300000, guid: dab5faad14a546a7a16a6633c7005bd9, type: 3}
+    time: 3.5
+  - audio: {fileID: 8300000, guid: dab5faad14a546a7a16a6633c7005bd9, type: 3}
+    time: 1.5

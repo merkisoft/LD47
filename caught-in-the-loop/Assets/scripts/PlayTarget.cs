@@ -21,9 +21,10 @@ public class PlayTarget : MonoBehaviour {
         nextLevel();
     }
 
+    
     private void nextLevel() {
         targetSoundLoop.level = levels[currentLevel++ % levels.Length];
-        user.clearUserInput(targetSoundLoop.level);
+        user.clearUserInput(targetSoundLoop.level, false);
         trigger();
     }
 
@@ -68,5 +69,11 @@ public class PlayTarget : MonoBehaviour {
         status.text = parts[0] + "  missing\n" + parts[1] + "  wrong";
 
         level.text = targetSoundLoop.level.name;
+        
+        if (Input.GetKeyDown(KeyCode.F)) {
+            user.clearUserInput(targetSoundLoop.level, true);
+        } else if (Input.GetKeyDown(KeyCode.N)) {
+            nextLevel();
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Transactions;
 using UnityEngine;
 
 public class TargetSoundLoop : SoundLoop {
-    public override void clearUserInput(Level level1) {
+    public override void clearUserInput(Level level1, bool freeplay) {
         // hide
     }
 
