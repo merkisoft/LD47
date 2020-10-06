@@ -12,6 +12,7 @@ public class PlayTarget : MonoBehaviour {
     public Text status;
     public Text level;
     public GameObject targetCircle;
+    public GameObject animationPrefab;
 
     public Level[] levels;
     private int currentLevel;
@@ -59,17 +60,21 @@ public class PlayTarget : MonoBehaviour {
     }
 
     private void Update() {
-        var statusText = TargetSoundLoop.compare(user.level.loopElements, targetSoundLoop.level.loopElements, targetSoundLoop.level.loopTime);
+        if (user.enabled) {
+            var statusText = TargetSoundLoop.compare(user.level.loopElements, targetSoundLoop.level.loopElements, targetSoundLoop.level.loopTime);
 
-        if (statusText == "0 0") {
-            nextLevel();
+            if (statusText == "0 0") {
+                user.enabled = false;
+                Instantiate(animationPrefab, user.animationContainer);
+                Invoke(nameof(nextLevel), 1f);
+            }
+
+            var parts = statusText.Split(' ');
+            status.text = parts[0] + "  missing\n" + parts[1] + "  wrong";
+
+            level.text = targetSoundLoop.level.name;
         }
-        
-        var parts = statusText.Split(' ');
-        status.text = parts[0] + "  missing\n" + parts[1] + "  wrong";
 
-        level.text = targetSoundLoop.level.name;
-        
         if (Input.GetKeyDown(KeyCode.F)) {
             user.clearUserInput(targetSoundLoop.level, true);
         } else if (Input.GetKeyDown(KeyCode.N)) {
