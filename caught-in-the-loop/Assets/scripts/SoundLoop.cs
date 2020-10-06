@@ -77,13 +77,9 @@ public class SoundLoop : MonoBehaviour {
     }
 
     public virtual void clearUserInput(Level targetLevel, bool freeplay) {
-        foreach (var g in toneControls) {
-            Destroy(g);
-        }
+        reset();
 
         level.loopTime = targetLevel.loopTime;
-        level.loopElements.Clear();
-        toneControls.Clear();
 
         foreach (var soundButton in soundButtons) {
             soundButton.gameObject.SetActive(freeplay);
@@ -95,7 +91,16 @@ public class SoundLoop : MonoBehaviour {
             }
         }
     }
-    
+
+    public void reset() {
+        foreach (var g in toneControls) {
+            Destroy(g);
+        }
+
+        level.loopElements.Clear();
+        toneControls.Clear();
+    }
+
     private void play(LoopElement le) {
         var audioSource = sources[sourcesIndex++ % sources.Length];
         audioSource.clip = le.audio;
