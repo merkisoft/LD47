@@ -15,7 +15,7 @@ public class PlayTarget : MonoBehaviour {
     public GameObject animationPrefab;
 
     public Level[] levels;
-    private int currentLevel;
+    private int currentLevel = -1;
 
     private void Start() {
         targetSoundLoop = GetComponent<TargetSoundLoop>();
@@ -24,8 +24,10 @@ public class PlayTarget : MonoBehaviour {
 
     
     private void nextLevel() {
-        targetSoundLoop.level = levels[currentLevel++ % levels.Length];
-        user.clearUserInput(targetSoundLoop.level, false);
+        currentLevel++;
+        level.text = levels[currentLevel % levels.Length].name;
+        targetSoundLoop.level = levels[currentLevel % levels.Length];
+        user.clearUserInput(targetSoundLoop.level);
         trigger();
     }
 
@@ -61,12 +63,13 @@ public class PlayTarget : MonoBehaviour {
 
     private void Update() {
         if (user.enabled) {
-            var statusText = TargetSoundLoop.compare(user.level.loopElements, targetSoundLoop.level.loopElements, targetSoundLoop.level.loopTime);
+            var statusText = user.level.compare(targetSoundLoop.level);
 
             if (statusText == "0 0") {
                 user.enabled = false;
                 Instantiate(animationPrefab, user.animationContainer);
                 Invoke(nameof(nextLevel), 1f);
+                return;
             }
 
             var parts = statusText.Split(' ');
@@ -76,7 +79,8 @@ public class PlayTarget : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.F)) {
-            user.clearUserInput(targetSoundLoop.level, true);
+            user.clearUserInput(null);
+            level.text = "freeplay";
         } else if (Input.GetKeyDown(KeyCode.N)) {
             nextLevel();
         }

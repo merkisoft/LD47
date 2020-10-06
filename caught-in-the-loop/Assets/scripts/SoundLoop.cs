@@ -15,8 +15,12 @@ public class SoundLoop : MonoBehaviour {
     
     private float startTime;
     private float lastTime;
+
+    private float totalTime;
+    public Text time;
     
     public Level level;
+    private Level targetLevel;
 
     private AudioSource[] sources = new AudioSource[10];
     private int sourcesIndex = 0;
@@ -42,6 +46,8 @@ public class SoundLoop : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        totalTime += Time.deltaTime;
+        if (this.time && targetLevel) this.time.text = totalTime.ToString("0.00");
         var time = (Time.time - startTime) % level.loopTime;
 
         if (line) line.localRotation = Quaternion.AngleAxis(360 / level.loopTime * time, Vector3.back);
@@ -68,31 +74,42 @@ public class SoundLoop : MonoBehaviour {
 
         var toneControl = Instantiate(toneControlPrefab, line.parent);
         toneControls.Add(toneControl);
+        var button = toneControl.GetComponentInChildren<Button>();
+        if (targetLevel && targetLevel.matches(loopElement)) {
+            button.image.color = Color.green;
+        }
         toneControl.transform.localRotation = Quaternion.AngleAxis(360 / level.loopTime * time, Vector3.back);
-        toneControl.GetComponentInChildren<Button>().onClick.AddListener(() => {
+        button.onClick.AddListener(() => {
             level.loopElements.Remove(loopElement);
             toneControls.Remove(toneControl);
             Destroy(toneControl);
         });
     }
 
-    public virtual void clearUserInput(Level targetLevel, bool freeplay) {
+    public virtual void clearUserInput(Level targetLevel) {
+        bool freeplay = targetLevel == null;
+        this.targetLevel = targetLevel;
         reset();
 
-        level.loopTime = targetLevel.loopTime;
+        level.loopTime = freeplay ? 4 : targetLevel.loopTime;
 
         foreach (var soundButton in soundButtons) {
             soundButton.gameObject.SetActive(freeplay);
-            foreach (var le in targetLevel.loopElements) {
-                if (le.audio == soundButton.clip.clip) {
-                    soundButton.gameObject.SetActive(true);
-                    break;
+            if (!freeplay) {
+                foreach (var le in targetLevel.loopElements) {
+                    if (le.audio == soundButton.clip.clip) {
+                        soundButton.gameObject.SetActive(true);
+                        break;
+                    }
                 }
             }
         }
     }
 
     public void reset() {
+        time.text = "";
+        totalTime = 0;
+        
         foreach (var g in toneControls) {
             Destroy(g);
         }
